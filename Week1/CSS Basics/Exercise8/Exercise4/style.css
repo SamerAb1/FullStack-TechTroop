@@ -1,0 +1,39 @@
+body {
+    color: white;
+    background-color: black
+}
+h1{
+    text-align: center;
+    color: #02fa85;
+    font-size: 44px;
+    text-shadow: 1px 1px 1px #aaa;
+    text-decoration: underline;
+}
+.intro {
+    color: #f0bf05;
+    font-size: 20px;
+    text-align: center;
+}
+table {
+    border: 5px solid #02fa85;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+    
+}
+
+thead {
+    color: #02fa85;
+    text-align: center;
+}
+
+tbody {
+    text-align: center;
+}
+td, th{
+    border: 2px solid grey;
+    padding: 20px;
+}
+td strong {
+  color: orange;
+}

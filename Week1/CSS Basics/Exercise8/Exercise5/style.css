@@ -1,0 +1,86 @@
+body {
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+h1 {
+  color: #2176bd;
+  text-shadow: 1px 1px #ccc;
+}
+
+form, fieldset {
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+}
+
+fieldset {
+  border: 2px solid #2196f3;
+  background-color: #e9ecef;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-weight: bold;
+  color: #2176bd;
+  background-color: white;
+  font-size: 1.1em;
+  padding: 0 10px;
+  align-items: left;
+}
+
+label {
+  display: inline-block;
+  width: 50px; 
+  margin-bottom: 10px;
+}
+input, select, textarea {
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+label[for="newsletter"] {
+  white-space: nowrap;
+}
+
+
+button {
+  font-weight: bold;
+  color: white;
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: background-color 0.3s ease;
+}
+
+/* Green button for Send */
+button[type="submit"] {
+  background-color: #28a745;
+}
+
+/* Red button for Reset */
+button[type="reset"] {
+  background-color: #dc3545;
+}
+
+/* Optional: hover effects */
+button:hover {
+  opacity: 0.9;
+}
