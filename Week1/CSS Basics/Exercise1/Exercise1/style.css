@@ -1,0 +1,27 @@
+
+    .first-topic {
+      font-family: "Brush Script MT", cursive;
+      color: #0400ff;
+      font-size: 72px;
+      font-bold: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .second-topic {
+      font-family: "Lucida Console", monospace;
+      color: #fa0101;
+      font-size: 56px;
+      font-bold: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .third-topic {
+      font-family: "Copperplate", fantasy;
+      color: #ffe600;
+      font-size: 44px;
+      font-bold: bold;
+      text-align: center;
+      margin-top: 20px;
+    }

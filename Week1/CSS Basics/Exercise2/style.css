@@ -1,0 +1,27 @@
+.topic {
+    font-family: "Brush Script MT", cursive;
+    color: #0400ff;
+    font-size: 72px;
+    font-bold: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bookmarks {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.bookmark {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f83e25;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.bookmark:hover {
+    background-color: #ffd39b;
+}

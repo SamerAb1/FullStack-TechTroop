@@ -1,0 +1,17 @@
+.topic {
+    font-family: "Brush Script MT", cursive;
+    color: #0400ff;
+    font-size: 72px;
+    font-bold: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bookmark-img {
+    width: 100px;              /* set a uniform width */
+    height: 100px;             /* set a uniform height */
+    object-fit: cover;         /* ensures the image fills the area without distortion */
+    border-radius: 8px;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
