@@ -1,0 +1,25 @@
+
+.table-header {
+    border: 2px solid #bfc7cb;
+    background-color: #eaecf0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table-row {
+    background-color: #baf4bb;
+    text-align: center;
+}
+
+.table-row td {
+    border-bottom: 2px solid #bfc7cb;
+}
+
+tbody td:nth-child(2) {
+    text-align: left;
+}
+
+table {
+    border: 2px solid #bfc7cb;
+    border-collapse: collapse;
+}
