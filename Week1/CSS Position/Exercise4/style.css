@@ -1,0 +1,44 @@
+.red-background {
+  width: 400px;
+  height: 250px;
+  background-color: #d63031;
+  position: relative;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin: 20px auto;
+}
+.white-edge {
+  width: 400px;
+  height: 75px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+}
+.silver-edges {
+  width: 75px;
+  height: 75px;
+  background-color: #b2bec3;
+  position: absolute;
+  top: 0;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+#edge-1 {
+  left: 0;
+}
+
+#edge-2 {
+  right: 0;
+}
+
+.white-space {
+  width: 250px;
+  height: 190px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 75px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

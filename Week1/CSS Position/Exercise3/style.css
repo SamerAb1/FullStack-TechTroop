@@ -1,0 +1,55 @@
+#background{
+    width: 500px;
+    height: 300px;
+    position: relative;
+    background-color: #6c5ce7;
+    border-radius: 3%;
+}
+
+.txt{
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#time{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.bar{
+  position: absolute;
+  width: 40px;
+ 
+  background-color: #b2bec3;
+  bottom: 10px;
+
+}
+ #bar1{
+  left: 10px;
+  height: 40px;
+ }
+
+ #bar2{
+  left: 80px;
+  height: 130px;
+ }
+#bar3{
+  left: 150px;
+  height: 220px;
+}
+#bar4{
+  left: 220px;
+  height: 200px;
+}
+#bar5{
+  left: 290px;
+  height: 170px;
+}
+#bar6{
+  left: 360px;
+  height: 90px;
+}
