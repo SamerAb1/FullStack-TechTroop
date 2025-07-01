@@ -1,40 +1,22 @@
-#Image{
-    width: 60%;
-    height: 40%;
+#parent{
+    width: 200px;
+    height: 200px;
     position: relative;
+    background-color: blue;
 }
 
-#Image1{
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    object-fit: contain;
+.child{
+    position: absolute;
+    background-color: red;
+}
+#child-1{
+    width: 10px;
+    height: 200px;
+    left: 25px;
 }
 
-#Top-Left{
-  position: absolute;
-  top: 0;
+#child-2{
+    width: 200px;
+    height: 10px;
+    top: 35px;
 }
-
-#Top-Right{
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-#Bottom-Left{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 3.84;
-}
-
-#Bottom-Right{
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 3.84;
-}
-
-
-
