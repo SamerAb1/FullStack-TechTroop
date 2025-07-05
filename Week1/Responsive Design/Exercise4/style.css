@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #6a70d7, #764ca4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.card {
+  background: linear-gradient(to right, #6a70d7, #764ca4);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #2d3436;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.product-image img {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  border-radius: 50%;
+}
+
+.product-info {
+  background: #ffffff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-info h2 {
+  font-size: 1.8rem;
+  color: #2d3436;
+}
+
+.product-info p {
+  color: #636e72;
+  line-height: 1.5;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+button {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Medium screens: Stack image on top, content below */
+@media (min-width: 600px) {
+  .card {
+    max-width: 600px;
+    flex-direction: column;
+  }
+  
+   .product-image {
+    flex: 0 0 50%; /* 40% width */
+  }
+
+  button {
+    align-self: flex-end;
+    width: auto;
+    padding: 12px 24px;
+  }
+}
+
+/* Large screens: Side-by-side layout */
+@media (min-width: 900px) {
+  .card {
+    flex-direction: row;
+  }
+  
+  .product-info {
+    justify-content: center;
+  }
+
+  button {
+    align-self: flex-start;
+    width: auto;
+  }
+  .product-image {
+    flex: 0 0 25%; /* 40% width */
+  }
+}
+
+@media (max-width: 599px) {
+  
+  .product-image,
+  .product-info {
+    flex: 1;
+  }
+
+  .product-footer {
+    flex-direction: column;
+}
+}
