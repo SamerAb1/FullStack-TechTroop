@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+}
+
+.flexbox{
+    display: flex;
+    width: 50%;
+    height: 300px;
+    flex: 1;
+    border: 1px solid #706f6f;
+}
+
+.circle{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #6495ec;
+    border: 2px solid #ffffff;
+    margin: auto;
+}
+
+.text {
+    font-size: 10px;
+    width: 70%;
+    text-align: justify;
+    align-items: center;
+    margin: auto;
+}

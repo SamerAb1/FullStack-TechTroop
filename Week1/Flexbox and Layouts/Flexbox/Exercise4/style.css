@@ -1,0 +1,38 @@
+.container{
+      display: flex;
+      border: 2px solid #e17055;
+      height: 400px;
+}
+
+.sidebar {
+      flex: 1;
+      border-right: 2px solid #e17055;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;  
+      padding-left: 20px;
+      padding-right: 20px;
+}
+
+
+.bar {
+      width: 100%;
+      height: 10px;
+      background-color: #e17055;
+      margin: 2px 0;
+}
+.bar-3{
+    width: 50%;
+    align-items: flex-start;
+}
+
+.content {
+    font-size: 10px;
+      flex: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: justify;
+}
