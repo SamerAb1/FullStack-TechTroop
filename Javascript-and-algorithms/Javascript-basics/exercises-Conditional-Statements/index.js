@@ -1,3 +1,5 @@
+// Conditional Statments
+
 // Exercise 1
 
 
@@ -63,16 +65,16 @@ let passwordLength = 7;
 let userAge = 15;
 // Your conditional code here
 
-
-if(usernameLength > 4 && passwordLength > 7 && userAge > 12){
-    console.log('Congrats you can creat an account!');
-}else if (usernameLength > 4 && passwordLength > 7){
-    console.log('Your are too young to create an account');
-}else if(passwordLength > 7 && userAge > 12){
-    console.log('Username length is too short.');
-}else if(usernameLength > 4 && userAge > 12){
-    console.log('Password length is too short.');
+if (usernameLength < 5) {
+  console.log("Username must be at least 5 characters long.");
+} else if (passwordLength < 8) {
+  console.log("Password must be at least 8 characters long.");
+} else if (userAge < 13) {
+  console.log("You must be at least 13 years old to create an account.");
+} else {
+  console.log("Account created!");
 }
+
 
 
 // Exercise 5
