@@ -74,3 +74,23 @@ const kitchen = {
         ]
     }
 }
+
+const hasOven = kitchen.hasOven;
+const works = kitchen.fridge.works;
+const price = kitchen.fridge.price;
+const radish = kitchen.fridge.items.find(item => item.name === "radish");
+const expiredDays = date - radish.expiryDate; 
+
+const expiredString = `${kitchen.owner}'s ${radish.name} expired ${expiredDays} day${expiredDays !== 1 ? 's' : ''} ago.`;
+
+const fixPrice = price / 2;
+
+if (hasOven && works) {
+    console.log(`${expiredString} Weird, considering her fridge works. Luckily, she has an oven to cook the radish in.`);
+} else if (!hasOven && works) {
+    console.log(`${expiredString} Weird, considering her fridge works. Too bad she doesn't have an oven to cook the radish in.`);
+} else if (hasOven && !works) {
+    console.log(`${expiredString} Probably because her fridge doesn't work. Luckily, she has an oven to cook the radish in. And she'll have to pay ${fixPrice} to fix the fridge.`);
+} else if (!hasOven && !works) {
+    console.log(`${expiredString} Probably because her fridge doesn't work. Too bad she doesn't have an oven to cook the radish in. And she'll have to pay ${fixPrice} to fix the fridge.`);
+}
