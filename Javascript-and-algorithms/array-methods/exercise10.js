@@ -18,5 +18,3 @@ let totaltax = cartItems.reduce((total,cartitem) => {
                   cartitem.category === "food" ? taxRates.food : 0;
     return total + (1 + taxrate) * (cartitem.price*cartitem.quantity)
 },0);
-
-console.log(totaltax); // Should print: 1621.3292
