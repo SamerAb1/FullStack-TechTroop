@@ -12,9 +12,9 @@ const StringFormatter = function () {
 }
 
 
-const formatter = StringFormatter()
+const formatter = StringFormatter();
 
-formatter.capitalizeFirst("dorothy") //should return Dorothy
-formatter.toSkewerCase("blue box") //should return blue-box
-console.log(formatter.capitalizeFirst("dorothy"))
-console.log(formatter.toSkewerCase("blue box"))
+formatter.capitalizeFirst("dorothy"); //should return Dorothy
+formatter.toSkewerCase("blue box"); //should return blue-box
+console.log(formatter.capitalizeFirst("dorothy"));
+console.log(formatter.toSkewerCase("blue box"));
