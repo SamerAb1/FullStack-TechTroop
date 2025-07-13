@@ -1,3 +1,5 @@
+// Exercise 4
+
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
 

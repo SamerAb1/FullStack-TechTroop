@@ -1,3 +1,5 @@
+// Exercise 1
+
 console.log('Please enter two numbers and operation (n1 op n2) ', process.argv);
 const number1 = parseInt(process.argv[2]);
 const operation = process.argv[3];
@@ -8,24 +10,3 @@ if(number1 && number2 && operation){
 }else{
     console.log("Please enter valid input!");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import readline from 'readline';
-
-// const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-// });
-
-// rl.question('Please enter two numbers and operation (n1 op n2', process.argv)
