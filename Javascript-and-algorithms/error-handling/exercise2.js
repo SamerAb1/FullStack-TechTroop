@@ -1,9 +1,8 @@
 const fs = require('fs');
-const path = require('path');
 
 function readFileWithErrorHandling(fileName, callback) {
 
-    fs.stat(fileName, "utf8", (err, data) => {
+    fs.stat(fileName, (err, data) => {
         if (err) {
             return callback(`File not found: ${fileName}`);
         }
