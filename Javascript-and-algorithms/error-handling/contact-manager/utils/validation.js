@@ -16,7 +16,7 @@ function validateContact(contact, existingContacts) {
         return { valid: false, error: "Error: Name is required and must only contain letters and spaces" };
     }
     if (!contact.email || !isValidEmail(contact.email)) {
-        return { valid: false, error: "Error: Email is required" };
+        return { valid: false, error: "Error: Email is required and must contain @ symbol" };
     }
     if (!contact.phone || !isValidPhone(contact.phone)) {
         return { valid: false, error: "Error: Phone is required and must be valid" };
