@@ -1,0 +1,1 @@
+const {isValidName, isValidEmail, isValidPhone, validateContact} = require("./validation.js");

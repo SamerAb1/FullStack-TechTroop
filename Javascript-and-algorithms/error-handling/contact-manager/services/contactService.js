@@ -1,59 +1,76 @@
 const { readContacts, saveContacts } = require('../utils/fileUtils');
 const { validateContact } = require('../utils/validation');
 
-function addContact(contact, filePath, callback) { 
-    readContacts(filePath, (loadErr, contacts) => {
-         if (err && err !== 'File not found') {
-            return callback(err);
-        }
-        const validation = validateContact(contact, contacts);
-        if (!validation.valid) {
-            return callback(validation.error, null, fileNotFound);
-        }
-        // Add the new contact to the array
-        contacts.push(contact);
-        saveContacts(filePath, contacts, (err) => {
-            if (err) return callback("Error: Could not save contacts", null, fileNotFound);
-            callback(null, contact, fileNotFound, contacts.length); // success!
-        });
-    });
- }
+function addContact(contact, filePath) { 
+    let contacts;
 
-function deleteContact(email, filePath, callback) { 
-    readContacts(filePath, (loadErr, contacts) => {
-        if (err) {
-            return callback(err, []);
+    try{
+         contacts = readContacts(filePath);
+    }catch(e){
+         if (e.message === 'File not found') {
+            contacts = [];
+        }else {
+            throw e;
         }
-       const index = contacts.findIndex(
+    }
+    const validation = validateContact(contact, contacts);
+    if (!validation.valid) {
+        throw new Error(validation.error);
+    }
+    contacts.push(contact);
+    try{
+            saveContacts(filePath,contacts);
+    }catch(e){
+            throw new Error('Error: could not save contacts');
+    }
+}
+
+function deleteContact(email, filePath) { 
+    let contacts;
+
+    try{
+         contacts = readContacts(filePath);
+    }catch(e){
+            throw e;
+    }
+     let index = contacts.findIndex(
             c => c.email && c.email.toLowerCase() === email.toLowerCase()
         );
+        if (index === -1) {
+            throw new Error(`Error: No contact found with email: ${email}`);
+        }
         const deleted = contacts.splice(index, 1)[0];
-        saveContacts(filePath, existingContacts, (err) => {
-            if (err) return callback("Error: Could not save contacts", null, fileNotFound);;
-            callback(null, deleted, contacts.length); // success!
-        });
-    });
-
- }
-function listContacts(filePath, callback) { 
-    readContacts(filePath, (loadErr, contacts) => {
-        if (err) {
-            return callback(err, []);
+        try{
+            saveContacts(filePath,contacts);
+            
+        }catch(e){
+            throw new Error('Error: could not save contacts');
         }
-         callback(null, contacts);
-    });
- }
+        return {deleted, count: contacts.length};
+}
 
-function searchContacts(query, filePath, callback) { 
-    readContacts(filePath, (loadErr, contacts) => {
-       if (err) {
-            return callback(err, []);
-        }
-         const results = contacts.filter(c =>
+function listContacts(filePath) { 
+    let contacts;
+    try{
+        contacts = readContacts(filePath);
+    }catch(e){
+        throw e;
+    }
+    return contacts;
+}
+
+function searchContacts(query, filePath) { 
+    let contacts;
+    try{
+        contacts = readContacts(filePath);
+    }catch(e){
+        throw e;
+    }   
+    const q = query.toLowerCase();
+    const results = contacts.filter(c =>
             c.name.toLowerCase().includes(q) || c.email.toLowerCase().includes(q)
-        );
-        callback(null, results, contacts.length);
-    });
- }
+    );
+    return {results, count: contacts.length}
+}
 
 module.exports = { addContact, deleteContact, listContacts, searchContacts };
