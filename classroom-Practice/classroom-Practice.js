@@ -1,73 +1,61 @@
-class Animal {
-    constructor(name, numLegs) {
+class Person {
+    constructor(name, startYear) {
         this.name = name
-        this.numLegs = numLegs
-        this.children = [];
+        this.startYear = startYear
+        this.courses = []
     }
-      giveBirth(name){
-        this.children.push(name);
+
+    addCourse(course) {
+        this.courses.push(course)
     }
 }
 
-class Human {
-    constructor(name, age, isFriendly){
-        this.name = name;
-        this.age = age;
-        this.isFriendly = isFriendly;
+
+class Student extends Person {
+    constructor(name, startYear) {
+        super(name, startYear)
+        this.grades = []
+    }
+
+    receiveGrade(courseName, finalGrade) {
+        this.grades.push({
+            course: courseName,
+            grade: finalGrade
+        })
+    }
+
+    //method overriding!
+    addCourse(course) {
+        if ((this.courses).indexOf(course) == -1) {
+            super.addCourse(course)
+        }
     }
 }
 
-class Vehicle {
-    static carsSold = 0;
-    constructor(x, y, speed){
-        this.x = x;
-        this.y = y;
-        this._speed = speed;
-        this._fuel;
-        Vehicle.carsSold++;
+class Teacher extends Person {
+    constructor(name, startYear, salary){
+        super(name, startYear);
+        this.salary = salary;
+        this.courses = {}; //attribute override
+    }
+
+    giveGrade(student, courseName, grade){
+        student.receiveGrade(courseName,grade);
     }
     
-    static getInfo() {
-    console.log("We've sold " + Vehicle.carsSold + " vehicles.");
-    }
-    static calculateMoney(){
-        console.log("We've earned " +Vehicle.carsSold * 30000 +"$ so far");
-    }
-
-    set speed(speed) {
-        if (speed < 0) {
-            return console.log("Speed must be positive");
-        }
-        this._speed = speed;
-    }
-    get speed(){
-        return this._speed;
-    }
-    set fuel(amount) {
-        if (fuel > 0 && fuel < 151) {
-            this._fuel = amount;
-        }else{
-            return console.log("fuel must be 0 < fuel < 151");
-        }
-        
-    }
-    get fuel(){
-        return this._fuel;
+    //method overriding!
+    addCourse(course) {
+        this.courses[course] = (this.courses[course] || 0) + 1;
     }
 
 }
-const dog = new Animal("bob", 4);
-console.log(dog.name + " " + dog.numLegs);
 
-const person = new Human("bob", 20, true);
-console.log(person.name + " " + person.age +" "+ person.isFriendly);
+class TeachingAssistant extends Teacher {
+    constructor(name, startYear, salary) {
+        super(name, startYear, salary)
+    }
+}
 
-dog.giveBirth("Dolly")
-console.log(dog.children) // should print an array with 1 item: ["Dolly"]﻿
 
-const car1 = new Vehicle(1, 2, 100);
-const car2 = new Vehicle(1, 2, 100);
-const car3 = new Vehicle(1, 2, 100);
-Vehicle.getInfo();
-Vehicle.calculateMoney();
-
+const ta1 = new TeachingAssistant("Brandon", 2014, 20000)
+console.log(ta1.toString())
