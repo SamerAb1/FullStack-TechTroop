@@ -1,61 +1,34 @@
-class Person {
-    constructor(name, startYear) {
-        this.name = name
-        this.startYear = startYear
-        this.courses = []
+class BSNode {
+    constructor(value) {
+        this.value = value;
+        this.leftChild;
+        this.rightChild;
     }
 
-    addCourse(course) {
-        this.courses.push(course)
-    }
-}
-
-
-class Student extends Person {
-    constructor(name, startYear) {
-        super(name, startYear)
-        this.grades = []
-    }
-
-    receiveGrade(courseName, finalGrade) {
-        this.grades.push({
-            course: courseName,
-            grade: finalGrade
-        })
-    }
-
-    //method overriding!
-    addCourse(course) {
-        if ((this.courses).indexOf(course) == -1) {
-            super.addCourse(course)
+    insertNode(newVal) {
+        if (!this.value) {
+            this.value = newVal
+        }
+        else if (newVal > this.value && this.rightChild) {
+            this.rightChild.insertNode(newVal)
+        }
+        else if(newVal <= this.value && this.leftChild) {
+            this.leftChild.insertNode(newVal)
+        }
+        else if (newVal <= this.value) {
+            this.leftChild = new BSNode(newVal)
+        }
+        else {
+            this.rightChild = new BSNode(newVal)
         }
     }
-}
-
-class Teacher extends Person {
-    constructor(name, startYear, salary){
-        super(name, startYear);
-        this.salary = salary;
-        this.courses = {}; //attribute override
-    }
-
-    giveGrade(student, courseName, grade){
-        student.receiveGrade(courseName,grade);
-    }
-    
-    //method overriding!
-    addCourse(course) {
-        this.courses[course] = (this.courses[course] || 0) + 1;
-    }
 
 }
 
-class TeachingAssistant extends Teacher {
-    constructor(name, startYear, salary) {
-        super(name, startYear, salary)
-    }
-}
+const bsN = new BSNode();
+const letters = ["H", "E","S", "G", "L", "Y", "I"];
 
+letters.forEach(l => bsN.insertNode(l));
 
-const ta1 = new TeachingAssistant("Brandon", 2014, 20000)
-console.log(ta1.toString())
+console.log(bsN)
+//prints:
