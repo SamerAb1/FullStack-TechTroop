@@ -1,0 +1,127 @@
+class BSNode {
+    constructor(value) {
+        this.value = value;
+        this.leftChild ;
+        this.rightChild ;
+    }
+
+    insertNode(newVal) {
+        if (this.value === undefined) {
+            this.value = newVal
+        }
+        else if (newVal > this.value && this.rightChild) {
+            this.rightChild.insertNode(newVal)
+        }
+        else if(newVal <= this.value && this.leftChild) {
+            this.leftChild.insertNode(newVal)
+        }
+        else if (newVal <= this.value) {
+            this.leftChild = new BSNode(newVal)
+        }
+        else {
+            this.rightChild = new BSNode(newVal)
+        }
+    }
+
+    findNode(value){
+        if(!this.value){
+            return false;
+        }else if(this.value === value){
+            return true;
+        }
+        if(value > this.value && this.rightChild){
+            return (this.rightChild).findNode(value);
+        }else if(value < this.value && this.leftChild){
+            return (this.leftChild).findNode(value);
+        }else{
+            return false;
+        }
+    }
+    
+    findCommonParent(value1, value2){
+        if((value1 > this.value && value1 !== this.rightChild.value) && (value2 > this.value && value2 !== this.rightChild.value)){
+            return this.rightChild.findCommonParent(value1,value2);
+        }else if((value1 < this.value && value1 !== this.leftChild.value) && (value2 < this.value && value2 !== this.leftChild.value)){
+            return this.leftChild.findCommonParent(value1,value2);
+        }else{
+            return this.value;
+        }
+    }
+
+    findMax() {
+         if (this.rightChild) {
+            return this.rightChild.findMax();
+        }
+        return this;
+    }
+    removeNode(parent,value){
+        if(!this.findNode(value)) return false;
+
+        if(value > this.value && this.rightChild){
+            this.rightChild.removeNode(this, value);
+        }else if(value < this.value && this.leftChild){
+            this.leftChild.removeNode(this, value);
+        }else {
+            if(!this.leftChild && !this.rightChild){
+                if(parent){
+                    if(parent.leftChild === this) parent.leftChild = null;
+                    if(parent.rightChild === this) parent.rightChild = null;
+                }
+
+            }else if (this.leftChild && !this.rightChild) {
+                if (parent) {
+                    if (parent.leftChild === this) parent.leftChild = this.leftChild;
+                    if (parent.rightChild === this) parent.rightChild = this.leftChild;
+                }
+            }
+            else if (!this.leftChild && this.rightChild) {
+                if (parent) {
+                    if (parent.leftChild === this) parent.leftChild = this.rightChild;
+                    if (parent.rightChild === this) parent.rightChild = this.rightChild;
+                }
+            }else {
+                
+                let maxLeft = this.leftChild.findMax();
+                this.value = maxLeft.value; 
+
+                this.leftChild.removeNode(this, maxLeft.value);
+            }
+        }
+
+    }
+
+}
+
+
+const letters = ["H", "E", "S", "G", "L", "Y", "I"];
+const letters1 = ["J", "H", "R", "E", "S", "P", "G", "B", "L", "Y", "I"];
+
+const bSTree = new BSNode()
+const bSTree1 = new BSNode()
+//insert nodes (same as in lesson)
+letters.forEach(l => bSTree.insertNode(l));
+//Use the following to test
+console.log(bSTree.findNode("H")) // should print true
+console.log(bSTree.findNode("G")) // should print true
+console.log(bSTree.findNode("Z")) // should print false
+console.log(bSTree.findNode("F")) // should print false
+console.log(bSTree.findNode("y")) // should print false - we didn't make the tree case sensitive!
+
+letters1.forEach(l => bSTree1.insertNode(l));
+
+console.log(bSTree1.findCommonParent("B", "I")) //should return "H"
+console.log(bSTree1.findCommonParent("B", "G")) //should return "E"
+console.log(bSTree1.findCommonParent("B", "L")) //should return "J"
+console.log(bSTree1.findCommonParent("L", "Y")) //should return "R"
+console.log(bSTree1.findCommonParent("E", "H")) //should return "J"
+
+const numbers = [8, 9, 12, 3, 5, 1, 11, 4];
+let nodeWithOneChild = new BSNode();
+numbers.forEach(n => nodeWithOneChild.insertNode(n));
+nodeWithOneChild.removeNode(nodeWithOneChild, 9);
+console.log(nodeWithOneChild); // will return tree like the first image (the 9 will be deletied) 
+    
+let nodeWithTwoChildren = new BSNode();
+numbers.forEach(n => nodeWithTwoChildren.insertNode(n));
+nodeWithTwoChildren.removeNode(nodeWithTwoChildren, 8);
+console.log(nodeWithTwoChildren); // will return tree like the second image (the root will be 5) 
