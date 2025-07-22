@@ -6,7 +6,7 @@ class AutoCompleteTrie{
     }
 
     addWord(word){
-        if (typeof word !== 'string' || !/^[a-zA-Z]+$/i.test(word)) return;
+        if (typeof word !== 'string' || !/^[a-zA-Z]+$/i.test(word)) return false;
         word = word.toLowerCase();
         let node = this;
         for(const ch of word){
@@ -16,6 +16,7 @@ class AutoCompleteTrie{
             node = node.children[ch];
         }
         node.endOfWord = true;
+        return true;
     }
 
     findWord(word){
