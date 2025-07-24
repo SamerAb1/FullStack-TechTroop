@@ -6,8 +6,29 @@
   </head>
 
   <body>
-    <div id="container">
-        
+    <div class="form-container">
+      <div id="signUp-field" class="centered">
+        <form>
+          <label for="name">Name</label>
+          <input type="text" id="name" />
+
+          <div class="row">
+            <div class="col">
+              <label for="salary">Desired Salary</label>
+              <input type="text" id="salary" />
+            </div>
+            <div class="col">
+              <label for="birthday">Birthday</label>
+              <input type="text" id="birthday" placeholder="MM/DD/YYYY" />
+            </div>
+          </div>
+
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" />
+          <div id="bottom-row">
+            <button type="submit" id="submit-btn">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </body>
