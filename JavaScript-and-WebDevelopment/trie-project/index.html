@@ -16,16 +16,22 @@
         />
         <button class="add-word-btn">Add Word</button>
       </div>
-      <input
-        type="text"
-        class="suggestions-input"
-        placeholder="Start typing to see suggestions..."
-      />
+      <div id="notification" style="display: none"></div>
+
+      <div class="autocomplete-container">
+        <input
+          type="text"
+          class="suggestions-input"
+          placeholder="Start typing to see suggestions..."
+          autocomplete="off"
+        />
+        <div id="suggestions-list" class="suggestions-list"></div>
+      </div>
       <div class="words-counter">
         <span class="count">0</span><br />
         <span class="counter-label">Words in Dictionary</span>
       </div>
     </div>
   </body>
-  <script src="./app.js"></script>
+  <script type="module" src="./app.js"></script>
 </html>

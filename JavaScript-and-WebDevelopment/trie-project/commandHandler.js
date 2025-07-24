@@ -1,53 +1,57 @@
-const AutoCompleteTrie = require('./autoCompleteTrie');
+import AutoCompleteTrie from "./autoCompleteTrie.js";
 
-const trie = new AutoCompleteTrie();
+export const trie = new AutoCompleteTrie();
 
 const SIG = { add: 1, find: 1, complete: 1, help: 0, exit: 0 };
 const WORD_RE = /^[a-z]+$/i;
 
 function validate(cmd, args) {
   if (!(cmd in SIG)) return `Unknown command "${cmd}"`;
-  if (args.length !== SIG[cmd]) return `Expected ${SIG[cmd]} arg(s) for "${cmd}"`;
-  if (SIG[cmd] === 1 && !WORD_RE.test(args[0])) return `Invalid word "${args[0]}" (letters only)`;
+  if (args.length !== SIG[cmd])
+    return `Expected ${SIG[cmd]} arg(s) for "${cmd}"`;
+  if (SIG[cmd] === 1 && !WORD_RE.test(args[0]))
+    return `Invalid word "${args[0]}" (letters only)`;
   return null;
 }
 
-function handleCommand(command, args) {
+function handleCommand(command, args, notifyCallback) {
   const err = validate(command, args);
-  if (err) { console.error(err); printUsage(true); return; }
+  if (err) {
+    if (notifyCallback) notifyCallback({ message: err, type: "fail" });
+    printUsage(true);
+    return;
+  }
 
   switch (command) {
-    case 'add': {
+    case "add": {
       const word = args[0].toLowerCase();
-      trie.addWord(word);
-      console.log(`Added '${word}' to dictionary`);
+      const result = trie.addWord(word);
+      if (notifyCallback) notifyCallback(result);
       break;
     }
-    case 'find': {
-      const word = args[0].toLowerCase();
-      console.log(trie.findWord(word) ? `'${word}' exists in dictionary` : `'${word}' not found in dictionary`);
-      break;
-    }
-    case 'complete': {
+    case "complete": {
       const p = args[0].toLowerCase();
       const list = trie.predictWords(p);
       console.log(
-        list.length ? `Suggestions for '${p}': ${list.join(', ')}` : `No suggestions for '${p}'`);
+        list.length
+          ? `Suggestions for '${p}': ${list.join(", ")}`
+          : `No suggestions for '${p}'`
+      );
       break;
     }
-    case 'help':
+    case "help":
       printUsage();
       break;
 
-    case 'exit':
-      console.log('Goodbye!');
+    case "exit":
+      console.log("Goodbye!");
       process.exit(0);
   }
 }
 
 function printUsage(short = false) {
   if (short) {
-    console.log('Usage: node app.js <command> [arg]');
+    console.log("Usage: node app.js <command> [arg]");
     return;
   }
   console.log(`
@@ -60,4 +64,4 @@ Commands:
 `);
 }
 
-module.exports = { handleCommand, printUsage };
+export default handleCommand;

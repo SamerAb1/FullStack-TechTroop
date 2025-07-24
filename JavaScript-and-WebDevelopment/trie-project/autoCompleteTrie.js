@@ -1,4 +1,4 @@
-class AutoCompleteTrie {
+export default class AutoCompleteTrie {
   constructor(value = "") {
     this.value = value;
     this.children = {};
@@ -6,7 +6,9 @@ class AutoCompleteTrie {
   }
 
   addWord(word) {
-    if (typeof word !== "string" || !/^[a-z]+$/i.test(word)) return false;
+    if (word === "") return { message: "Cannot add empty word", type: "fail" };
+    if (typeof word !== "string" || !/^[a-z]+$/i.test(word))
+      return { message: `'${word}' is not Valid`, type: "fail" };
 
     let node = this;
     for (const ch of word) {
@@ -15,8 +17,11 @@ class AutoCompleteTrie {
       }
       node = node.children[ch];
     }
+    if (node.endOfWord) {
+      return { message: `'${word}' is already in dictionary`, type: "info" };
+    }
     node.endOfWord = true;
-    return true;
+    return { message: `Added '${word}' to dictionary`, type: "success" };
   }
 
   findWord(word) {
@@ -56,5 +61,3 @@ class AutoCompleteTrie {
     }
   }
 }
-
-module.exports = AutoCompleteTrie;
