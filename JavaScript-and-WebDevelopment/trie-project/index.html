@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Initial State</h2>
+      <div class="add-word-row">
+        <input
+          type="text"
+          class="word-input"
+          placeholder="Enter a word to add to dictionary"
+        />
+        <button class="add-word-btn">Add Word</button>
+      </div>
+      <input
+        type="text"
+        class="suggestions-input"
+        placeholder="Start typing to see suggestions..."
+      />
+      <div class="words-counter">
+        <span class="count">0</span><br />
+        <span class="counter-label">Words in Dictionary</span>
+      </div>
+    </div>
+  </body>
+  <script src="./app.js"></script>
+</html>
