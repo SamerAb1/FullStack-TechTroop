@@ -1,8 +1,24 @@
+const rollDice = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    const random = Math.floor(Math.random() * 7) + 1;
+    if (random < 7) {
+      resolve(random);
+    } else {
+      reject(random);
+    }
+  }, 0.5);
+});
 
-const bsN = new BSNode();
-const letters = ["H", "E","S", "G", "L", "Y", "I"];
+rollDice.then();
 
-letters.forEach(l => bsN.insertNode(l));
-
-console.log(bsN)
-//prints:
+Promise((resolve, reject) => {
+  function oldAsyncFunction() {
+    setTimeout(() => {
+      if (Math.random() > 0.5) {
+        resolve("Success");
+      } else {
+        reject(new Error("Failed"));
+      }
+    }, 1000);
+  }
+});
