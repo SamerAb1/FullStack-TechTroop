@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tweeter</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <h1>Tweeter</h1>
+
+    <!-- Input section for new posts -->
+    <div class="twit-area">
+      <input id="input" type="text" placeholder="What's on your mind?" />
+      <button id="post">Twit</button>
+    </div>
+
+    <!-- Posts will be rendered here -->
+    <div id="posts"></div>
+
+    <!-- Script order: Renderer -> Model -> Main -->
+    <script src="./renderer.js"></script>
+    <script src="./model.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

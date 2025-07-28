@@ -1,0 +1,118 @@
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e8edee;
+  margin: 40px;
+}
+
+/* Header */
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Post Input Area */
+.twit-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#post {
+  background-color: #0097db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#post:hover {
+  background-color: #007bb6;
+}
+
+/* Posts Container */
+#posts {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Individual Post */
+.post {
+  background-color: #f3f6f7;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.post-text {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Delete Post Button */
+.delete {
+
+  background-color: #e74c3c;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  font-size: 14px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 73px;
+}
+
+.delete:hover {
+  background-color: #c0392b;
+}
+
+/* Comments Section */
+.comment-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.comments {
+  margin: 10px 0;
+}
+
+.comment {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.delete-comment {
+  display: inline-block;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Comment Input */
+.comment-input {
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 14px;
+  width: 60%;
+}
+
+.comment-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 5px;
+}
