@@ -1,24 +1,18 @@
-function foo(){
-    let sum = 0
-    for (let i = 1000; i < 2000; i++){
-        if (i % 203 === 0){
-            sum += getSecondDigit(i)
-        } else if (i % 497 === 0) {
-            sum += getLastDigit(i)
-        } else if (i % 293 === 0) {
-            sum += getLastDigit(i*13)
-        } 
-    }
-    return sum
-}
+let userStorage = {
+  darkMode: true,
+  showSideNav: false,
+  defaultResultCount: 9,
+  latestMarks: {
+    sectionA: 92,
+    sectionB: 11,
+  },
+  cart: [
+    { id: 3112, count: 2 },
+    { id: 812, count: 16 },
+  ],
+};
 
-function getSecondDigit(number){
-    return parseInt(number.toString().split("")[0])
-}
+localStorage.userStorage = JSON.stringify(userStorage);
+let data = JSON.parse(localStorage.userStorage);
 
-function getLastDigit(number){
-    let numberLength = number.toString().length
-    return parseInt(number.toString().split("")[numberLength - 1])
-}
-
-foo()
+console.log(data.cart[data.cart.length - 1].count);
