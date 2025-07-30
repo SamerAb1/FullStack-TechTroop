@@ -18,4 +18,4 @@ const fetch = function (queryValue, apiKey) {
   });
 };
 
-fetch("cats", "YsniGN809rUtHa2RHSy7z3Rz87tVYVaZ");
+fetch("cats", "API_Key");
