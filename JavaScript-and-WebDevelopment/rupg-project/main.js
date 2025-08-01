@@ -1,4 +1,6 @@
 import { User } from "./user.js";
+import { Renderer } from "./renderer.js";
+const renderer = new Renderer();
 
 const generateBtn = document.getElementById("generate-btn");
 
@@ -10,6 +12,7 @@ async function generateUserData() {
     const main = usersData.results[0];
     const userName = `${main.name.first} ${main.name.last}`;
     const userLocation = `${main.location.street.name}, ${main.location.city}`;
+    const userImgUrl = main.picture.large;
     const userFriends = usersData.results
       .slice(1)
       .map((f) => `${f.name.first} ${f.name.last}`);
@@ -34,18 +37,20 @@ async function generateUserData() {
 
     // Fetch Bacon Ipsum
     const ipsumResp = await fetch(
-      "https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1"
+      "https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1"
     );
     const ipsumData = await ipsumResp.json();
     const aboutMe = ipsumData.join(" ");
 
     // Create user and fill all fields
-    const user = new User(userName, userLocation, userFriends);
+    const user = new User(userName, userLocation, userImgUrl, userFriends);
     user.setQuote(quote);
     user.setPokemon(pokemonObj);
     user.setAboutMe(aboutMe);
 
     console.log(user);
+    renderer.renderUser(user);
+    renderer.renderFriends(user.friends);
   } catch (err) {
     console.error("Error generating user data:", err.message);
     alert("There was a problem loading user data. Please try again.");
