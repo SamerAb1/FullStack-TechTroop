@@ -1,8 +1,11 @@
 import { User } from "./user.js";
 import { Renderer } from "./renderer.js";
 const renderer = new Renderer();
+let user = null;
 
-const generateBtn = document.getElementById("generate-btn");
+const generateUserBtn = document.getElementById("generate-btn");
+const saveUserBtn = document.getElementById("save-btn");
+const loadUserBtn = document.getElementById("load-btn");
 
 async function generateUserData() {
   try {
@@ -43,7 +46,7 @@ async function generateUserData() {
     const aboutMe = ipsumData.join(" ");
 
     // Create user and fill all fields
-    const user = new User(userName, userLocation, userImgUrl, userFriends);
+    user = new User(userName, userLocation, userImgUrl, userFriends);
     user.setQuote(quote);
     user.setPokemon(pokemonObj);
     user.setAboutMe(aboutMe);
@@ -56,5 +59,48 @@ async function generateUserData() {
     alert("There was a problem loading user data. Please try again.");
   }
 }
+function createUser(loadedUser) {
+  // Create user and fill all fields
+  user = new User(
+    loadedUser.name,
+    loadedUser.location,
+    loadedUser.userImgUrl,
+    loadedUser.friends
+  );
+  user.setQuote(loadedUser.quote);
+  user.setPokemon(loadedUser.pokemon);
+  user.setAboutMe(loadedUser.aboutMe);
 
-generateBtn.addEventListener("click", generateUserData);
+  console.log(user);
+  renderer.renderUser(user);
+  renderer.renderFriends(user.friends);
+}
+function saveUser() {
+  try {
+    if (user) {
+      localStorage.user = JSON.stringify(user);
+    } else {
+      throw new Error("No User To Save");
+    }
+  } catch (error) {
+    console.log("Save Error:", error.message);
+    alert("No User To Save, Try Generate User first");
+  }
+}
+
+function loadUser() {
+  try {
+    if (localStorage.user) {
+      createUser(JSON.parse(localStorage.user));
+    } else {
+      throw new Error("No User To Load");
+    }
+  } catch (error) {
+    console.log("Load Error:", error.message);
+    alert("No User To Load, Try Save User first");
+  }
+}
+
+generateUserBtn.addEventListener("click", generateUserData);
+saveUserBtn.addEventListener("click", saveUser);
+loadUserBtn.addEventListener("click", loadUser);

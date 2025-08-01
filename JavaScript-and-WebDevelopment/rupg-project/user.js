@@ -1,5 +1,5 @@
 export class User {
-  constructor(name, location, imgUrl, friends) {
+  constructor(name = "", location = "", imgUrl = "", friends = []) {
     this.name = name;
     this.location = location;
     this.friends = friends;

@@ -36,22 +36,24 @@ h1 {
   flex: 3;
   justify-content: space-between;
 }
-
-#generate-btn {
-  background-color: rgb(159, 207, 87);
-  border-radius: 4px;
+.button{
+ border-radius: 4px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   font-weight: 700;
   color: white;
   font-size: 1.2rem;
   width: 20vh;
   height: 5vh;
-  border: 1px solid #55801b;
   cursor: pointer;
 }
-
-#generate-btn:hover {
-  background-color: #7fb742;
+#generate-btn {
+  background-color: #385276;
+}
+#save-btn {
+  background-color:#145da0;
+}
+#load-btn {
+  background-color: rgb(108, 107, 105);
 }
 
 #friends-list {
