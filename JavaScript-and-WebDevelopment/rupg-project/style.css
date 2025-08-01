@@ -1,0 +1,68 @@
+* {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.container {
+  background: #385276;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+h1 {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 2.0rem;
+  font-weight: 700;
+  color: #145da0;
+  text-align: center;
+  margin: 5px 0 20px 0;
+  letter-spacing: 1px;
+}
+
+#profile-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 80vh;
+  min-width: 320px;
+  height: auto;
+}
+
+#generate-btn {
+  background-color: rgb(159, 207, 87);
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  font-weight: 700;
+  color: white;
+  font-size: 1.2rem;
+  width: 20vh;
+  height: 5vh;
+  border: 1px solid #55801b;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#generate-btn:hover {
+  background-color: #7fb742;
+}
+
+#friends-list {
+  background-color: #145da0;
+  color: white;
+  width: 20vh;
+  min-width: 120px;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
