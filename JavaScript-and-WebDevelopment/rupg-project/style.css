@@ -12,10 +12,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 h1 {
-  font-family: "Montserrat", Arial, sans-serif;
   font-size: 2.0rem;
   font-weight: 700;
   color: #145da0;
@@ -28,12 +28,13 @@ h1 {
   background: #ffffff;
   border-radius: 18px;
   padding: 20px;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   width: 80vh;
-  min-width: 320px;
-  height: auto;
+  height: 75vh;
+  flex-wrap: wrap;
+  flex: 3;
+
 }
 
 #generate-btn {
@@ -47,7 +48,6 @@ h1 {
   height: 5vh;
   border: 1px solid #55801b;
   cursor: pointer;
-  transition: background 0.15s;
 }
 
 #generate-btn:hover {
@@ -61,8 +61,8 @@ h1 {
   min-width: 120px;
   border-radius: 18px;
   padding: 20px;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: 75vh;
+  flex: 1;
 }
