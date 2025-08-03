@@ -1,0 +1,73 @@
+* {
+  font-family: "Courier New", monospace;
+}
+
+#container {
+  background: #5574c4;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4.0vw;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  margin: 5px 0 20px 0;
+  letter-spacing: 2px;
+}
+
+#search-input{
+  flex: 1;
+  font-size: 1.5vw;
+  border-color: black;
+  border-width: 5px;
+  border-radius: 50px;
+  padding: 20px;
+}
+
+#search-button{
+  color: #be3c1b;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border-color: black;
+  border-width: 5px;
+  font-weight: bold;
+  font-size: 1.5vw;
+  width: 10vw;
+  height: 5vh;
+  cursor: pointer;
+
+}
+
+
+#results {
+  margin-top: 32px;
+  font-family: Arial, sans-serif;
+  padding: 0;
+}
+#results li {
+  list-style: none;
+  border-bottom: 1px solid #eee;
+  margin: 0;
+  padding: 16px 0;
+}
+#results a {
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 2vw;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+#results a:hover {
+  color: #000000;
+  text-decoration: underline;
+}

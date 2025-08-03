@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stock Exchange Project</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Stock Exchange</h1>
+    </header>
+
+    <main>
+      <form id="search-form">
+        <div id="container">
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search for Company or Stock"
+          />
+          <button id="search-button" type="submit">Search</button>
+          <ul id="results"></ul>
+        </div>
+      </form>
+
+      <div id="loading" hidden>Loading…</div>
+      <div id="message" class="muted"></div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="module" src="./api.js"></script>
+  </body>
+</html>
