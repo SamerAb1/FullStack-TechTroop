@@ -1,5 +1,5 @@
 import { Renderer } from "./ui.js";
-const apiKey = "UGlpkOkaB118ZEpgk6J7BYbDcolSHuKU--";
+const apiKey = "UGlpkOkaB118ZEpgk6J7BYbDcolSHuKU";
 const renderer = new Renderer();
 const simplifiedStocks = [
   {
@@ -71,12 +71,14 @@ async function generateData() {
   event.preventDefault();
   try {
     const query = searchInput.value;
-    console.log(query);
+
     if (query) {
-      // const stockResp = await fetch(
-      //   `https://financialmodelingprep.com//api/v3/search?query=${query}&limit=10&exchange=NASDAQ&apikey=${apiKey}`
-      // );
-      const stockData = simplifiedStocks;
+      const stockResp = await fetch(
+        `https://financialmodelingprep.com//api/v3/search?query=${query}&limit=10&exchange=NASDAQ&apikey=${apiKey}`
+      );
+      const stockData = await stockResp.json();
+      // const stockData = simplifiedStocks;
+      console.log(stockData);
       if (stockData) {
         renderer.renderData(stockData);
       } else {
