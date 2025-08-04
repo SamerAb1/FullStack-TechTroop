@@ -3,7 +3,7 @@
 }
 
 #container {
-  background: #5574c4;
+  background: #ffffff;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   border-radius: 15px;
   padding: 20px;
@@ -34,7 +34,7 @@ h1 {
 }
 
 #search-button{
-  color: #be3c1b;
+  color: #1b54be;
   background-color: #ffffff;
   border-radius: 4px;
   border-color: black;
@@ -63,8 +63,6 @@ h1 {
   color: #000000;
   font-weight: bold;
   text-decoration: none;
-  font-size: 2vw;
-  transition: color 0.2s;
   font-family: inherit;
 }
 #results a:hover {
@@ -109,6 +107,13 @@ h1 {
   display: flex;
   gap: 14px;
   align-items: baseline;
+}
+.result-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 #stock-price {
