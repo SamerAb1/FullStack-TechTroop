@@ -5,7 +5,7 @@ import "./App.css";
 import Landing from "./Landing";
 
 function App() {
-  let data = {
+  const initialData = {
     user: "Robyn",
     store: [
       { item: "XSPS Pro Player", price: 800, discount: 0.2, hottest: false },
@@ -20,6 +20,7 @@ function App() {
     shouldDiscount: false,
     currentPage: "Landing",
   };
+  const [data, setData] = useState(initialData);
   const [currentPage, setCurrentPage] = useState(data.currentPage);
   const [discount, setDiscount] = useState(data.shouldDiscount);
   function setPage() {
@@ -30,6 +31,13 @@ function App() {
     }
     setCurrentPage(data.currentPage);
   }
+
+  function applyDiscount() {
+    setData((prev) => ({
+      ...prev,
+      shouldDiscount: !prev.shouldDiscount,
+    }));
+  }
   return (
     <>
       <div className="Exercise-1">
@@ -39,10 +47,18 @@ function App() {
       <div className="Exercise-2">
         <h1>----Exercise-2 + 3 + 4----</h1>
         <button onClick={setPage}>Change Page</button>
+
         {currentPage === "Landing" ? (
           <Landing data={data} />
         ) : (
-          <Home data={data} />
+          <div>
+            {discount ? (
+              <button onClick={applyDiscount}>Remove Discount</button>
+            ) : (
+              <button onClick={applyDiscount}>Add Discount</button>
+            )}
+            <Home data={data} />
+          </div>
         )}
       </div>
     </>
