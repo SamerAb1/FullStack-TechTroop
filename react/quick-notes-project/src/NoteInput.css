@@ -21,7 +21,6 @@
 
 .notes-grid {
   display: grid;
-  display: flex;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 10px;
   margin-top: 20px;
@@ -30,17 +29,30 @@
 }
 
 .note-card {
+  
   border-radius: 6px;
-  border-color: white;
-  border-width: 2px;
   padding: 10px;
-  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
-
+  box-shadow: 0 2px 5px rgba(250, 250, 250, 0.2);
 }
 
-.note-card small {
-  display: block;
-  margin-top: 5px;
-  color: #555;
-  font-size: 0.8em;
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.delete-btn:hover {
+  color: red;
+}
+
+.note-card p {
+  margin-top: 8px;
 }
