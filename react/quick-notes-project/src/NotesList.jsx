@@ -1,16 +1,12 @@
 import React from "react";
 import "./NotesList.css";
 
-export default function NotesList({ notes, onDeleteNote, onOpenNote }) {
-  function formatDate(date) {
-    return new Date(date).toLocaleString("en-US", {
-      month: "short",
-      day: "numeric",
-      hour: "numeric",
-      minute: "2-digit",
-    });
-  }
-
+export default function NotesList({
+  notes,
+  onOpenNote,
+  onDeleteNote,
+  formatDate,
+}) {
   return (
     <div className="notes-grid">
       {notes.map((n) => (
@@ -20,15 +16,13 @@ export default function NotesList({ notes, onDeleteNote, onOpenNote }) {
               {formatDate(n.createdAt)}
               {n.updatedAt && <span> • Updated {formatDate(n.updatedAt)}</span>}
             </small>
-
-            {/* IMPORTANT: type="button" + stopPropagation */}
             <button
               type="button"
               className="delete-btn"
               aria-label="Delete note"
               onClick={(e) => {
-                e.stopPropagation();
-                onDeleteNote?.(n.id);
+                e.stopPropagation(); // don't trigger open modal
+                onDeleteNote(n.id);
               }}
             >
               ✕

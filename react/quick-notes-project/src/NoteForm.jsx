@@ -10,7 +10,7 @@ export default function NoteForm({
   const [title, setTitle] = useState(initial.title || "");
   const [text, setText] = useState(initial.text || "");
 
-  // Only reset when initial changes (e.g., opening another note)
+  // Only reset fields when the provided initial values actually change
   useEffect(() => {
     setTitle(initial.title || "");
     setText(initial.text || "");

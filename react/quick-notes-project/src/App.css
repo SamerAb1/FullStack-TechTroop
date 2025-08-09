@@ -1,9 +1,12 @@
 #root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.app-wrap {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {

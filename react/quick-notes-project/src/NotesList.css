@@ -5,6 +5,7 @@
   gap: 16px;
   margin-top: 20px;
   width: 100%;
+  display:flex;
 }
 
 /* card */
@@ -70,6 +71,7 @@
 .note-card p {
   display: -webkit-box;
   -webkit-line-clamp: 6;      /* show up to 6 lines */
+  line-clamp: 6;              /* standard property for compatibility */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
