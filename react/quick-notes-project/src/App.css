@@ -5,3 +5,72 @@
   text-align: center;
 }
 
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+.ReactModal__Content {
+  width: 250px !important;       /* Same width as your note card */
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #1e1e1e !important;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  border: none !important;
+  inset: unset !important;       /* Remove default positioning */
+  position: relative;
+  
+}
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  
+}
+
+.modal-date {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  color: red;
+}
+
+
+.modal-title {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+
+.modal-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ddd;
+}
