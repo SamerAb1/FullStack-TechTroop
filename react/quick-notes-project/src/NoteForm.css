@@ -22,6 +22,7 @@ body {
 .note-form {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 12px;
   margin: 0;
   align-items: center;
@@ -29,7 +30,7 @@ body {
 
 .nf-title,
 .nf-text {
-  width: 300px;
+  width: 400px;
   box-sizing: border-box;
   background: #2a2a2a;
   color: #eee;
@@ -76,4 +77,24 @@ body {
 @media (prefers-color-scheme: light) {
   body { background: #fff; color: #213547; }
   .nf-title, .nf-text { background: #f9f9f9; color: #213547; border: 1px solid #d6d6d6; }
+}
+
+
+.row { display: flex; gap: 10px; width: 400px; }
+.nf-select {
+  flex: 0 0 120px;
+  background: #2a2a2a;
+  color: #eee;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.nf-select:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 0 3px rgba(100,108,255,.25);
+}
+@media (max-width: 420px) {
+  .row { flex-direction: column; width: 300px;}
+  .nf-select { width: 300px; }
 }

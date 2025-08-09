@@ -9,8 +9,10 @@
 
 /* compact, card-like modal */
 .ReactModal__Content {
+  display: flex;
+  flex-direction: column;
   inset: unset !important;     /* ignore default positioning */
-  width: 320px !important;     /* feel free to set 260px to match card exactly */
+  width: 400px !important;     /* feel free to set 260px to match card exactly */
   max-width: 92vw;
   max-height: 80vh;
   overflow-y: auto;            /* only vertical scroll when needed */
@@ -18,8 +20,8 @@
   padding: 16px;
   border-radius: 10px;
   background: #1e1e1e;
-  color: #eee;
   border: none !important;
+  color: #eee;
   box-shadow: 0 10px 30px rgba(0,0,0,.4);
   box-sizing: border-box;
   outline: none;
