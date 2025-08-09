@@ -1,61 +1,82 @@
-
+/* grid of notes */
 .notes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
   margin-top: 20px;
   width: 100%;
-  max-width: 600px;
 }
 
-
+/* card */
 .note-card {
   background: #1e1e1e;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
   cursor: pointer;
-  transition: transform 0.1s ease-in-out;
+  transition: transform .1s ease;
+  width: 100%;
+  max-height: 180px;          /* keep grid tidy */
+  overflow: hidden;           /* hide overflow (we clamp text) */
 }
+.note-card:hover { transform: scale(1.02); }
 
-.note-card:hover {
-  transform: scale(1.02);
-}
-
-
+/* header row */
 .note-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 6px;
 }
 
-.note-header small {
-  font-size: 0.8rem;
-  color: #aaa;
+.note-dates {
+  font-size: .8rem;
+  color: #a9a9a9;
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
 
-
+/* delete button */
 .delete-btn {
   background: none;
   border: none;
   color: #888;
   cursor: pointer;
   font-size: 1rem;
+  line-height: 1;
+  border-radius: 8px;
+  padding: 2px 6px;
 }
+.delete-btn:hover { color: #ff6b6b; background: #2a2a2a; }
 
-.delete-btn:hover {
-  color: red;
-}
-
-
-.note-card h4 {
-  margin: 8px 0 4px;
-  color: #fff;
-}
-
-
+/* title + body */
+.note-card h4,
 .note-card p {
   margin: 0;
   color: #ddd;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: pre-wrap;      /* respect textarea line breaks */
 }
 
+.note-card h4 {
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+/* clamp body to a few lines */
+.note-card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;      /* show up to 6 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* light theme */
+@media (prefers-color-scheme: light) {
+  .note-card { background: #f9f9f9; }
+  .note-card h4 { color: #213547; }
+  .note-card p  { color: #333; }
+}

@@ -13,26 +13,30 @@ export default function NotesList({ notes, onDeleteNote, onOpenNote }) {
 
   return (
     <div className="notes-grid">
-      {notes.map((note, index) => (
-        <div
-          className="note-card"
-          key={index}
-          onClick={() => onOpenNote(note)} // Open modal on click
-        >
+      {notes.map((n) => (
+        <div className="note-card" key={n.id} onClick={() => onOpenNote(n)}>
           <div className="note-header">
-            <small>{formatDate(note.date)}</small>
+            <small className="note-dates">
+              {formatDate(n.createdAt)}
+              {n.updatedAt && <span> • Updated {formatDate(n.updatedAt)}</span>}
+            </small>
+
+            {/* IMPORTANT: type="button" + stopPropagation */}
             <button
+              type="button"
               className="delete-btn"
+              aria-label="Delete note"
               onClick={(e) => {
-                e.stopPropagation(); // prevent modal opening when deleting
-                onDeleteNote(index);
+                e.stopPropagation();
+                onDeleteNote?.(n.id);
               }}
             >
               ✕
             </button>
           </div>
-          {note.title && <h4>{note.title}</h4>}
-          <p>{note.text}</p>
+
+          {n.title && <h4 title={n.title}>{n.title}</h4>}
+          <p>{n.text}</p>
         </div>
       ))}
     </div>

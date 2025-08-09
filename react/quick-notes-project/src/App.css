@@ -1,8 +1,9 @@
 #root {
-  max-width: 1280px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -11,66 +12,6 @@ h1 {
   color: #fff;
 }
 
-
-.ReactModal__Overlay {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-}
-
-
-.ReactModal__Content {
-  width: 250px !important;       /* Same width as your note card */
-  padding: 15px;
-  border-radius: 8px;
-  background-color: #1e1e1e !important;
-  color: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  border: none !important;
-  inset: unset !important;       /* Remove default positioning */
-  position: relative;
-  
-}
-
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  
-}
-
-.modal-date {
-  color: #aaa;
-  font-size: 0.8rem;
-}
-
-
-.modal-close-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.modal-close-btn:hover {
-  color: red;
-}
-
-
-.modal-title {
-  margin: 0 0 5px 0;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-
-.modal-text {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #ddd;
+@media (prefers-color-scheme: light) {
+  h1 { color: #213547; }
 }

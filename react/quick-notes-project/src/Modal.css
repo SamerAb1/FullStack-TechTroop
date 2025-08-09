@@ -1,0 +1,52 @@
+/* centered overlay */
+.ReactModal__Overlay {
+  background: rgba(0,0,0,.6) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px; /* gap from window edges */
+}
+
+/* compact, card-like modal */
+.ReactModal__Content {
+  inset: unset !important;     /* ignore default positioning */
+  width: 320px !important;     /* feel free to set 260px to match card exactly */
+  max-width: 92vw;
+  max-height: 80vh;
+  overflow-y: auto;            /* only vertical scroll when needed */
+  overflow-x: hidden;
+  padding: 16px;
+  border-radius: 10px;
+  background: #1e1e1e;
+  color: #eee;
+  border: none !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  box-sizing: border-box;
+  outline: none;
+  background-color: black !important;
+}
+
+/* header (dates + close) */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-date {
+  color: #a9a9a9;
+  font-size: .85rem;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: 0;
+  color: #ddd;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px 6px;
+}
+.modal-close-btn:hover { color: #ff6b6b; background: #2a2a2a; }

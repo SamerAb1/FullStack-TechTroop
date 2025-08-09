@@ -1,0 +1,79 @@
+/* shared base (dark default) */
+:root {
+  color-scheme: light dark;
+  background: #242424;
+  color: rgba(255,255,255,.9);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* center page content a bit */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  background: #242424;
+}
+
+/* Add/Edit form */
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  align-items: center;
+}
+
+.nf-title,
+.nf-text {
+  width: 300px;
+  box-sizing: border-box;
+  background: #2a2a2a;
+  color: #eee;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.nf-text {
+  height: 110px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+.nf-title::placeholder,
+.nf-text::placeholder { color: #8f8f8f; }
+
+.nf-title:focus,
+.nf-text:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 0 3px rgba(100,108,255,.25);
+}
+
+/* submit button */
+.nf-btn {
+  display: inline-block;
+  align-self: center;
+  min-width: 140px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #646cff;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .05s ease, background .2s ease;
+}
+.nf-btn:hover { background: #535bf2; }
+.nf-btn:active { transform: translateY(1px); }
+
+/* light theme */
+@media (prefers-color-scheme: light) {
+  body { background: #fff; color: #213547; }
+  .nf-title, .nf-text { background: #f9f9f9; color: #213547; border: 1px solid #d6d6d6; }
+}
