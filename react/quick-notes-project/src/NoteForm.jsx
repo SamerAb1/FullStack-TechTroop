@@ -18,7 +18,6 @@ export default function NoteForm({
     setTitle(initial.title || "");
     setText(initial.text || "");
     setCategory(initial.category || (categories[0]?.key ?? ""));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initial.title, initial.text, initial.category]);
 
   const handleSubmit = (e) => {

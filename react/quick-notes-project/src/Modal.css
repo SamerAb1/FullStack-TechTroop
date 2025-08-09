@@ -11,11 +11,11 @@
 .ReactModal__Content {
   display: flex;
   flex-direction: column;
-  inset: unset !important;     /* ignore default positioning */
-  width: 400px !important;     /* feel free to set 260px to match card exactly */
+  inset: unset !important;     
+  width: 400px !important;     
   max-width: 92vw;
   max-height: 80vh;
-  overflow-y: auto;            /* only vertical scroll when needed */
+  overflow-y: auto;            
   overflow-x: hidden;
   padding: 16px;
   border-radius: 10px;
