@@ -1,0 +1,13 @@
+import { useState } from "react";
+import Exercise1 from "./Exercise1";
+import "./App.css";
+
+function App() {
+  return (
+    <>
+      <Exercise1 />
+    </>
+  );
+}
+
+export default App;
