@@ -1,0 +1,23 @@
+.movies-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.filter-movies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 32px;
+  flex-wrap: wrap;
+}
+
+.movies-list {
+  display: grid;
+  gap: 28px;
+}
+
+/* Optional subtle divider between cards */
+.movies-list > .movie:not(:last-child) {
+  position: relative;
+}
