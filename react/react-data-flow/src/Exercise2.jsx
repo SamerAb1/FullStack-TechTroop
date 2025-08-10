@@ -55,7 +55,12 @@ export default function Exercise2() {
         />
       ) : (
         <Conversation
-          conversations={dataObj.conversations}
+          convo={
+            dataObj.conversations.find(
+              (c) => c.with === dataObj.displayConversation
+            ).convo
+          }
+          sender={dataObj.displayConversation}
           onClickEvent={backToList}
         />
       )}

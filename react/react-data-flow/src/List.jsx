@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Contact from "./Contact";
 export default function List(props) {
-  console.log(props);
   function handleClick(name) {
     props.onClickEvent(name);
   }
@@ -9,7 +8,7 @@ export default function List(props) {
   return (
     <ul>
       {props.conversations.map((c, idx) => (
-        <Contact contact={c.with} onClickEvent={handleClick} />
+        <Contact key={idx} contact={c.with} onClickEvent={handleClick} />
       ))}
     </ul>
   );

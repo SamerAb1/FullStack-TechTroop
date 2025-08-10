@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function Contact(props) {
-  console.log(props);
   function handleClick(name) {
     props.onClickEvent(name);
   }
