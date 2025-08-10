@@ -92,7 +92,7 @@ export default function App() {
 
   return (
     <div className="app-wrap">
-      <h1>Notes</h1>
+      <h1>My-Notes</h1>
 
       {/* TOOLBAR — search + category chips */}
       <div className="toolbar">
