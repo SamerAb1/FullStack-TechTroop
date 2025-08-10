@@ -36,7 +36,8 @@ export default function Exercise2() {
     ],
   };
   const [dataObj, setDataObj] = useState(data);
-  function openConversation(name) {
+
+  function displayConvo(name) {
     const newData = { ...dataObj, displayConversation: name };
     setDataObj(newData);
   }
@@ -44,12 +45,13 @@ export default function Exercise2() {
     const newData = { ...dataObj, displayConversation: null };
     setDataObj(newData);
   }
+
   return (
     <div>
       {dataObj.displayConversation === null ? (
         <List
           conversations={dataObj.conversations}
-          onClickEvent={openConversation}
+          onClickEvent={displayConvo}
         />
       ) : (
         <Conversation
