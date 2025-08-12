@@ -5,13 +5,14 @@ import axios from "axios";
 import ActorCard from "../components/ActorCard";
 
 function ActorsPage() {
+  const API_KEY = "53d2ee2137cf3228aefae083c815885--";
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [actors, setActors] = useState([]);
 
   useEffect(() => {
     async function getData() {
-      const searchURL = `https://api.themoviedb.org/3/search/person?api_key=53d2ee2137cf3228aefae083c8158855&query=${searchText}`;
+      const searchURL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&query=${searchText}`;
       const response = await axios.get(searchURL);
       setSearchResults(
         response.data.results.sort((a, b) => b.popularity - a.popularity)
