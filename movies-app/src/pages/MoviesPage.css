@@ -1,0 +1,15 @@
+
+.movies-page .filter-movies {
+  display: flex;
+}
+
+.movies-page .filter-movies input {
+  flex-grow: 1;
+  padding: 5px;
+}
+
+
+.movies-page {
+  max-width: 1200px;
+  margin: auto;
+}

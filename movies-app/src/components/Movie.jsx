@@ -1,6 +1,6 @@
 import "./Movie.css";
 
-export default function Movie({ movie }) {
+function Movie({ movie, isSelected, onSelected }) {
   // formats the minutes runtime to: Xh Xm
   // For example: 142 -> 2h 22m
   function formatRuntime(runtime) {
@@ -10,7 +10,10 @@ export default function Movie({ movie }) {
   }
 
   return (
-    <div className="movie">
+    <div
+      className={"movie" + (isSelected ? " selected" : "")}
+      onClick={() => onSelected(movie)}
+    >
       <div className="movie-poster">
         <img src={movie.poster} alt={movie.name} />
       </div>
@@ -34,3 +37,5 @@ export default function Movie({ movie }) {
     </div>
   );
 }
+
+export default Movie;

@@ -1,10 +1,14 @@
 import "./App.css";
-import MoviesPage from "./components/MoviesPage";
+import MoviesPage from "./pages/MoviesPage";
+import ActorsPage from "./pages/ActorsPage";
+import "@mantine/core/styles.css";
+import { MantineProvider } from "@mantine/core";
 
 function App() {
   return (
     <>
-      <MoviesPage />
+      <ActorsPage />
+      {/* <MoviesPage /> */}
     </>
   );
 }
