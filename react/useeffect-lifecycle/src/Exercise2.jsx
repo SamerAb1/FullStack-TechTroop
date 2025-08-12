@@ -2,31 +2,36 @@ import { useState, useEffect } from "react";
 import getData from "./dataService";
 
 export default function Exercise2() {
-  const [titleIndex, setTitleIndex] = useState(1);
-  const [titles, setTitles] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  const updateTitle = () => {
-    setTitleIndex(titleIndex + 1);
+  const setPostsArray = (data) => {
+    let newPosts = [];
+    for (let i = 0; i < 10; i++) {
+      newPosts.push(data[Math.floor(Math.random() * data.length)]);
+    }
+    setPosts(newPosts);
   };
 
   useEffect(() => {
-    const getTitlesData = async function () {
+    const getPostsData = async function () {
       const data = await getData();
-      console.log(data);
 
-      setTitles(data);
+      setPostsArray(data);
     };
-    getTitlesData();
+    getPostsData();
   }, []);
 
-  useEffect(() => {
-    setTimeout(updateTitle, 1000);
-  }, [titleIndex]);
-
+  console.log(`test: ${posts}`);
   return (
     <div>
-      <div className="box">
-        {titles.find((t) => t.id === titleIndex)?.title ?? "Not found"}
+      <h1>Top Posts</h1>
+      <div className="grid">
+        {posts.map((post, idx) => (
+          <article key={post?.id ?? idx} className="card">
+            <h2 className="card__title">{post?.title}</h2>
+            <p className="card__body">{post?.body}</p>
+          </article>
+        ))}
       </div>
     </div>
   );

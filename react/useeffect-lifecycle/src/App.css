@@ -11,3 +11,49 @@
   border: 2px solid white;
  
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.card {
+  border: 1px solid #cfd8dc;
+  border-radius: 4px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__title {
+  margin: 0 0 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.card__body {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Medium screen: fewer columns */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small screen: 1 column stacked like your new screenshot */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
