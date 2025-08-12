@@ -1,7 +1,8 @@
-import { Container } from "@mantine/core";
+import { Container, Grid } from "@mantine/core";
 import SearchBox from "../components/SearchBox";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ActorCard from "../components/ActorCard";
 
 function ActorsPage() {
   const [searchText, setSearchText] = useState("");
@@ -40,24 +41,13 @@ function ActorsPage() {
         results={searchResults.map((result) => result.name)}
         onResultClicked={addActor}
       />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam.
-        Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit
-        magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam.
-        Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit
-        magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam.
-        Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit
-        magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?
-      </p>
-      {actors.map((actor, index) => (
-        <p key={index}>{actor.name}</p>
-      ))}
+      <Grid>
+        {actors.map((actor, index) => (
+          <Grid.Col key={index} span={{ base: 12, sm: 6, md: 3 }}>
+            <ActorCard actor={actor} />
+          </Grid.Col>
+        ))}
+      </Grid>
     </Container>
   );
 }
