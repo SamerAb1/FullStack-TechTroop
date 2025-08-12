@@ -1,0 +1,46 @@
+.entity-list {
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 50%;
+  }
+  
+  .entity {
+    font-family: cursive;
+    width: 20%;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(186, 186, 186);
+    opacity: 0.85;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+  
+  .entity img {
+    width: 100%;
+    height: 70%;
+    display: block;
+    object-fit: cover;
+
+  }
+  
+  .entity .info {
+    padding: 20px;
+    background: #fff;
+  }
+  
+  .entity .info h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .entity .info p {
+    margin: 10px 0;
+    font-size: 24px;
+    text-align: center;
+  }
+  

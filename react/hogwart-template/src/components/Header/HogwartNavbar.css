@@ -1,0 +1,19 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* align navbar to the left */
+    color: #fff;
+    padding: 0 16px;
+  }
+  
+  .navbar a {
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 16px;
+    font-size: 36px;
+    color:white;
+    font-weight: bold;
+    font-family: cursive;
+  }

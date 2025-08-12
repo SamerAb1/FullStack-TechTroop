@@ -1,0 +1,21 @@
+#root{
+  background-image: url(https://images.ctfassets.net/usf1vwtuqyxm/3QQaEkThAnIAiXveGhJYD9/f79a571dbe9fd456d65e783040601fdc/hogwarts-castle-.jpg);
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: auto; /* add this */
+}
+
+#about{
+  text-align: center;
+  font-size: 60px;
+  color:white;
+  font-family: cursive;
+  text-shadow: 0 0 3px #f5fe7c, 0 0 5px #1e1e80;
+}
