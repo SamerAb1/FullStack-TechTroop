@@ -1,4 +1,5 @@
 import {
+  Alert,
   Anchor,
   Button,
   Checkbox,
@@ -14,16 +15,37 @@ import classes from "./LoginPage.module.css";
 import { useState } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../auth/AuthProvider";
+import { useForm } from "@mantine/form";
 
 export function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
+  const form = useForm({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validate: {
+      email: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
+      password: (val) =>
+        val.length < 6 ? "Password should include at least 6 characters" : null,
+    },
+  });
   const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState(false);
   const { onLogin } = useAuth();
 
-  function handleLogin() {
-    setLoading(true);
-    onLogin(email, pwd);
+  async function handleLogin() {
+    setLoginError(false);
+    const validation = form.validate();
+    if (validation.hasErrors) {
+      console.log(validation);
+    } else {
+      setLoading(true);
+      const error = await onLogin(form.values.email, form.values.password);
+      if (error) {
+        setLoading(false);
+        setLoginError(true);
+      }
+    }
   }
 
   return (
@@ -37,12 +59,24 @@ export function LoginPage() {
       </Text>
 
       <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
+        {loginError && (
+          <Alert
+            // icon={<IconAlertCircle size="1rem" />}
+            title="Login Failed"
+            color="red"
+            variant="light"
+          >
+            {loginError.message}
+          </Alert>
+        )}
+
         <TextInput
           label="Email"
           required
           radius="md"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={form.values.email}
+          onChange={(e) => form.setFieldValue("email", e.currentTarget.value)}
+          error={form.errors.email}
         />
         <PasswordInput
           label="Password"
@@ -50,8 +84,11 @@ export function LoginPage() {
           required
           mt="md"
           radius="md"
-          value={pwd}
-          onChange={(e) => setPwd(e.target.value)}
+          value={form.values.password}
+          onChange={(e) =>
+            form.setFieldValue("password", e.currentTarget.value)
+          }
+          error={form.errors.password}
         />
         <Button
           fullWidth

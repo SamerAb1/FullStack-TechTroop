@@ -1,29 +1,47 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { supabase } from "../data/supabase";
+
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [activeUser, setActiveUser] = useState(
-    JSON.parse(localStorage.activeUser)
-  );
+  const [activeUser, setActiveUser] = useState(null);
+  //   localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null
+  // );
   const navigate = useNavigate();
 
-  useEffect(() => {
-    //Write to localStorage on each change of active user
-    if (localStorage.activeUser !== activeUser) {
-      localStorage.setItem("activeUser", JSON.stringify(activeUser));
-    }
-  }, [activeUser]);
+  // useEffect(() => {
+  //   // Write to local Storage  on each change of active user
+  //   if (localStorage.activeUser !== activeUser) {
+  //     localStorage.setItem("activeUser", JSON.stringify(activeUser));
+  //   }
+  // }, [activeUser]);
 
-  const handleLogin = (email, password) => {
-    setTimeout(() => {
-      setActiveUser("john");
+  const handleLogin = async (email, password) => {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      console.log(error);
+      return error;
+    } else {
+      setActiveUser(data.user);
       navigate("/movies");
-    }, 1000);
+    }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.log(error);
+      throw error;
+    } else {
+      setActiveUser(null);
+      navigate("/");
+    }
+
     setActiveUser(null);
     navigate("/");
   };
