@@ -1,23 +1,23 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 const USERNAME = "Samer";
 
-export default function TweetComposer({ onAdd }) {
+export default function TweetComposer({ onAdd, disabled }) {
   const [text, setText] = useState("");
-  const length = text.length;
-  const overLimit = length > 140;
-  const canTweet = text.trim() !== "" && !overLimit;
-  const remaining = useMemo(() => 140 - length, [length]);
 
-  function handleSubmit(e) {
+  const overLimit = text.length > 140;
+  const canTweet = text.trim() !== "" && !overLimit && !disabled;
+
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!canTweet) return;
+
     const tweet = {
-      id: crypto?.randomUUID ? crypto.randomUUID() : String(Date.now()),
-      user: USERNAME,
-      text: text.trim(),
-      createdAt: new Date().toISOString(),
+      content: text.trim(),
+      userName: USERNAME,
+      date: new Date().toISOString(),
     };
-    onAdd(tweet);
+
+    await onAdd(tweet);
     setText("");
   }
 
@@ -31,13 +31,13 @@ export default function TweetComposer({ onAdd }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows={5}
+        disabled={disabled}
       />
       <div className="composer__footer">
         <button type="submit" className="btn btn--primary" disabled={!canTweet}>
-          Tweet
+          {disabled ? "Posting..." : "Tweet"}
         </button>
       </div>
-
       {overLimit && (
         <div className="composer__error">
           The tweet can't contain more than 140 chars.

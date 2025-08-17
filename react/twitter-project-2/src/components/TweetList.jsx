@@ -8,7 +8,7 @@ export default function TweetList({ tweets }) {
   return (
     <section className="list">
       {tweets.map((t) => (
-        <Tweet key={t.id} tweet={t} />
+        <Tweet key={t.id ?? `${t.userName}-${t.date}`} tweet={t} />
       ))}
     </section>
   );
