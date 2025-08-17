@@ -11,26 +11,8 @@ const links = [
   { link: "/community", label: "Community" },
 ];
 
-export function Navbar() {
+export function Navbar({ onLogout }) {
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
-
-  const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={classes.link}
-      data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
-    >
-      {link.label}
-    </a>
-  ));
-
-  console.log(classes);
 
   return (
     <header className={classes.header}>
@@ -54,14 +36,9 @@ export function Navbar() {
           </NavLink>
         </Group>
         <Group gap={5} visibleFrom="xs">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? classes.link + " " + classes.active : classes.link
-            }
-          >
+          <a onClick={onLogout} className={classes.link}>
             Logout
-          </NavLink>
+          </a>
         </Group>
 
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />

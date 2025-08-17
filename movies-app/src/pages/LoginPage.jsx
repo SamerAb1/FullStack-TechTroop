@@ -14,9 +14,15 @@ import classes from "./LoginPage.module.css";
 import { useState } from "react";
 import { Link } from "react-router";
 
-export function LoginPage() {
+export function LoginPage({ onLogin }) {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  function handleLogin() {
+    setLoading(true);
+    onLogin(email, pwd);
+  }
 
   return (
     <Container size={420} my={40}>
@@ -45,7 +51,14 @@ export function LoginPage() {
           value={pwd}
           onChange={(e) => setPwd(e.target.value)}
         />
-        <Button fullWidth mt="xl" radius="md" component={Link} to="/movies">
+        <Button
+          fullWidth
+          mt="xl"
+          radius="md"
+          component={Link}
+          loading={loading}
+          onClick={handleLogin}
+        >
           Sign in
         </Button>
       </Paper>
