@@ -2,6 +2,8 @@ import Movie from "../components/Movie";
 import "./MoviesPage.css";
 import jsonMovies from "../data/movies.json";
 import { useState } from "react";
+import { Container } from "@mantine/core";
+import { Navbar } from "../components/Navbar";
 
 function MoviesPage() {
   const [movies, setMovies] = useState(jsonMovies);
@@ -35,32 +37,35 @@ function MoviesPage() {
   }
 
   return (
-    <div className="movies-page">
-      <h1>Movies Page</h1>
-      <div className="filter-movies">
-        <input
-          type="text"
-          placeholder="Filter Movies..."
-          value={filterText}
-          onChange={(e) => setFilterText(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            setComedyOnly(!comedyOnly);
-          }}
-        >
-          {comedyOnly ? "Show All" : "Comedy Only"}
-        </button>
-      </div>
-      {displayMovies.map((movie) => (
-        <Movie
-          movie={movie}
-          key={movie.id}
-          isSelected={movie === selectedMovie}
-          onSelected={handleMovieSelection}
-        />
-      ))}
-    </div>
+    <>
+      <Navbar />
+      <Container size="md" className="movies-page">
+        <h1>Movies Page</h1>
+        <div className="filter-movies">
+          <input
+            type="text"
+            placeholder="Filter Movies..."
+            value={filterText}
+            onChange={(e) => setFilterText(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              setComedyOnly(!comedyOnly);
+            }}
+          >
+            {comedyOnly ? "Show All" : "Comedy Only"}
+          </button>
+        </div>
+        {displayMovies.map((movie) => (
+          <Movie
+            movie={movie}
+            key={movie.id}
+            isSelected={movie === selectedMovie}
+            onSelected={handleMovieSelection}
+          />
+        ))}
+      </Container>
+    </>
   );
 }
 
