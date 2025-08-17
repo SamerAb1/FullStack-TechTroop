@@ -6,46 +6,33 @@ import { BrowserRouter, Route, Routes, useNavigate } from "react-router";
 import HomePage from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import { AuthProvider } from "./auth/AuthProvider";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [activeUser, setActiveUser] = useState(null);
-  const navigate = useNavigate();
-
-  const handleLogin = (email, password) => {
-    setTimeout(() => {
-      setActiveUser("john");
-      navigate("/movies");
-    }, 1000);
-  };
-
-  const handleLogout = () => {
-    setActiveUser(null);
-    navigate("/");
-  };
-
   return (
     <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-        <Route
-          path="/movies"
-          element={
-            <ProtectedRoute activeUser={activeUser}>
-              <MoviesPage onLogout={handleLogout} />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/actors"
-          element={
-            <ProtectedRoute activeUser={activeUser}>
-              <ActorsPage onLogout={handleLogout} />{" "}
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/movies"
+            element={
+              <ProtectedRoute>
+                <MoviesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/actors"
+            element={
+              <ProtectedRoute>
+                <ActorsPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </AuthProvider>
     </>
   );
 }

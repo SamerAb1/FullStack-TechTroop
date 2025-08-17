@@ -1,6 +1,8 @@
 import { Navigate } from "react-router";
+import { useAuth } from "./AuthProvider";
+function ProtectedRoute({ children }) {
+  const { activeUser } = useAuth();
 
-function ProtectedRoute({ activeUser, children }) {
   if (!activeUser) return <Navigate to="/" replace />;
 
   return <>{children}</>;

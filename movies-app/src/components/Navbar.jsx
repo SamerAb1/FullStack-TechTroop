@@ -3,6 +3,7 @@ import { Burger, Container, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./Navbar.module.css";
 import { NavLink } from "react-router";
+import { useAuth } from "../auth/AuthProvider";
 
 const links = [
   { link: "/about", label: "Features" },
@@ -11,9 +12,9 @@ const links = [
   { link: "/community", label: "Community" },
 ];
 
-export function Navbar({ onLogout }) {
+export function Navbar() {
   const [opened, { toggle }] = useDisclosure(false);
-
+  const { onLogout } = useAuth();
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>

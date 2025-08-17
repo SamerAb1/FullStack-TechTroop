@@ -5,7 +5,7 @@ import axios from "axios";
 import ActorCard from "../components/ActorCard";
 import { Navbar } from "../components/Navbar";
 
-function ActorsPage({ onLogout }) {
+function ActorsPage() {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [actors, setActors] = useState([]);
@@ -33,7 +33,7 @@ function ActorsPage({ onLogout }) {
 
   return (
     <>
-      <Navbar onLogout={onLogout} />
+      <Navbar />
       <Container size="md">
         <h1>Actors Page</h1>
         <SearchBox
