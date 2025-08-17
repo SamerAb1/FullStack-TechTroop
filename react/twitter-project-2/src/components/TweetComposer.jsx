@@ -1,23 +1,14 @@
 import { useState } from "react";
-const USERNAME = "Samer";
 
 export default function TweetComposer({ onAdd, disabled }) {
   const [text, setText] = useState("");
-
   const overLimit = text.length > 140;
   const canTweet = text.trim() !== "" && !overLimit && !disabled;
 
   async function handleSubmit(e) {
     e.preventDefault();
     if (!canTweet) return;
-
-    const tweet = {
-      content: text.trim(),
-      userName: USERNAME,
-      date: new Date().toISOString(),
-    };
-
-    await onAdd(tweet);
+    await onAdd({ content: text }); // Home will add userName + date
     setText("");
   }
 
