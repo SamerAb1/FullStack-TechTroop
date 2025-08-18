@@ -1,14 +1,19 @@
 import { useState } from "react";
+import { useTweets } from "../context/TweetsContext";
+import { useUser } from "../context/UserContext";
 
-export default function TweetComposer({ onAdd, disabled }) {
+export default function TweetComposer() {
   const [text, setText] = useState("");
+  const { creating, createTweet } = useTweets();
+  const { userName } = useUser();
+
   const overLimit = text.length > 140;
-  const canTweet = text.trim() !== "" && !overLimit && !disabled;
+  const canTweet = text.trim() !== "" && !overLimit && !creating;
 
   async function handleSubmit(e) {
     e.preventDefault();
     if (!canTweet) return;
-    await onAdd({ content: text }); // Home will add userName + date
+    await createTweet(text, userName); // context handles POST + local add
     setText("");
   }
 
@@ -22,11 +27,11 @@ export default function TweetComposer({ onAdd, disabled }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows={5}
-        disabled={disabled}
+        disabled={creating}
       />
       <div className="composer__footer">
         <button type="submit" className="btn btn--primary" disabled={!canTweet}>
-          {disabled ? "Posting..." : "Tweet"}
+          {creating ? "Posting..." : "Tweet"}
         </button>
       </div>
       {overLimit && (

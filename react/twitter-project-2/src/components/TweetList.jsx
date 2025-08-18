@@ -1,12 +1,11 @@
-// src/components/TweetList.jsx
 import Tweet from "./Tweet";
+import { useTweets } from "../context/TweetsContext";
+import { useUser } from "../context/UserContext";
 
-export default function TweetList({
-  tweets,
-  currentUser,
-  onDelete,
-  deletingKey,
-}) {
+export default function TweetList() {
+  const { tweets, deletingKey, deleteTweet } = useTweets();
+  const { userName } = useUser();
+
   if (!tweets.length)
     return <p className="empty">No tweets yet. Be the first!</p>;
 
@@ -20,9 +19,9 @@ export default function TweetList({
           <Tweet
             key={t.id ?? k}
             tweet={t}
-            canDelete={t.userName === currentUser}
+            canDelete={t.userName === userName}
             isDeleting={deletingKey === k}
-            onDelete={() => onDelete(t)}
+            onDelete={() => deleteTweet(t)}
           />
         );
       })}

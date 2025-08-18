@@ -4,12 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import { UserProvider } from "./context/UserContext.jsx";
+import { TweetsProvider } from "./context/TweetsContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <TweetsProvider>
+          <App />
+        </TweetsProvider>
       </UserProvider>
     </BrowserRouter>
   </StrictMode>
