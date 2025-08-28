@@ -20,7 +20,7 @@ import { useForm } from "@mantine/form";
 export function LoginPage() {
   const form = useForm({
     initialValues: {
-      email: "",
+      email: "nirch@example.com",
       password: "",
     },
     validate: {
@@ -61,7 +61,7 @@ export function LoginPage() {
       <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
         {loginError && (
           <Alert
-            // icon={<IconAlertCircle size="1rem" />}
+            icon={<IconAlertCircle size="1.5rem" />}
             title="Login Failed"
             color="red"
             variant="light"

@@ -17,6 +17,18 @@ export function AuthProvider({ children }) {
   //   }
   // }, [activeUser]);
 
+  useEffect(() => {
+    const fetchSession = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      console.log(data);
+      console.log(error);
+      // checking if there is an open session
+      if (data && data.session && data.session.user) {
+        setActiveUser(data.session.user);
+      }
+    };
+  }, []);
+  fetchSession();
   const handleLogin = async (email, password) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
