@@ -13,28 +13,26 @@ const server = http.createServer(async function (req, res) {
 
   console.log(`${method} ${path}`);
   res.setHeader("Content-Type", "application/json");
-
+  res.statusCode = 200;
   if (method === "GET" && path === "/") {
     res.setHeader("Content-Type", "text/plain");
-    res.statusCode = 200;
+
     res.end("Welcome to my server!");
   } else if (method === "GET" && path === "/about") {
     res.setHeader("Content-Type", "text/plain");
-    res.statusCode = 200;
+
     res.end("This is the about page");
   } else if (method === "GET" && path === "/contact") {
     res.setHeader("Content-Type", "text/plain");
-    res.statusCode = 200;
+
     res.end("Contact: Samer");
   } else if (method === "GET" && path === "/api/users") {
-    res.statusCode = 200;
     res.end(JSON.stringify(users));
   } else if (method === "GET" && path.startsWith("/api/users/")) {
     const id = parseInt(path.split("/")[3]);
     const user = users.find((u) => u.id === id);
 
     if (user) {
-      res.statusCode = 200;
       res.end(JSON.stringify(user));
     } else {
       res.statusCode = 404;
