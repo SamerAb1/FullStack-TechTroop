@@ -34,10 +34,8 @@ app.get("/buy/:name", function (req, res) {
   if (!item[0]) {
     res.send({ name: req.params.name, inventory: null });
   } else {
-    if (item[0].inventory < 1) {
-      res.send({ name: req.params.name, inventory: item[0].inventory });
-    } else {
-      res.send({ name: req.params.name, inventory: item[0].inventory });
+    res.send({ name: req.params.name, inventory: item[0].inventory });
+    if (item[0].inventory > 1) {
       item[0].inventory--;
     }
   }
