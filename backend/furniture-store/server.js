@@ -9,7 +9,7 @@ const store = [
   { name: "picture frame", inventory: 31, price: 70 },
 ];
 app.use(express.static(path.join(__dirname, "dist")));
-app.use(express.static(path.join(__dirname, "node_modules")));
+app.use(express.static(path.join(__dirname, "../../node_modules")));
 
 app.get("/", function (req, res) {
   console.log("Someone has come into the server. Brace yourselves.");
@@ -23,20 +23,21 @@ app.get("/priceCheck/:name", function (req, res) {
   const item = store.filter((i) => i.name === req.params.name);
 
   if (!item[0]) {
-    res.send({ price: null });
+    res.send({ name: req.params.name, price: null });
   } else {
-    res.send({ price: item[0].price });
+    res.send({ name: req.params.name, price: item[0].price });
   }
 });
 
 app.get("/buy/:name", function (req, res) {
   const item = store.filter((i) => i.name === req.params.name);
   if (!item[0]) {
-    res.send("Item not Found");
+    res.send({ name: req.params.name, inventory: null });
   } else {
     if (item[0].inventory < 1) {
-      res.send("Not enough inventory");
+      res.send({ name: req.params.name, inventory: item[0].inventory });
     } else {
+      res.send({ name: req.params.name, inventory: item[0].inventory });
       item[0].inventory--;
     }
   }
